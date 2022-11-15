@@ -1,0 +1,195 @@
+/* Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved. 
+/* SPDX-License-Identifier: MIT-0 */
+ body {
+     background-color: #16191f;
+}
+ h2 {
+     width:100%;
+     padding: 0;
+     margin: 2 0;
+}
+ div.col2 {
+     width: 50%;
+}
+ div.row2 {
+     height: 50%;
+}
+ button.amplify-button {
+     background-color: #ec7211;
+     margin: 10px;
+}
+ .App {
+     background-color: #687078;
+     text-align: center;
+     width: 1200px;
+     margin-left: auto;
+     margin-right: auto;
+     border: 1px #eaeded solid;
+     padding: 5px;
+}
+ .App-header {
+     background-color: #282c34;
+     min-height: 1vh;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     font-size: calc(10px + 2vmin);
+     color: white;
+     margin-top: 0;
+}
+ .App-link {
+     color: #61dafb;
+}
+ .Container {
+     border-bottom: 1px dotted black;
+     margin-bottom: 10px;
+}
+ canvas{
+     border: 2px solid black;
+     background-color: steelblue;
+     opacity: 0.5;
+     margin: 15px;
+}
+ .scopeContainer {
+     display: flex;
+     flex-direction:row;
+     padding-bottom: 20px;
+}
+ .scopeContainer div {
+     display: block;
+     flex: 1 1 0px;
+}
+ .scopeContainer div.talkingPanel {
+     padding-top: 30px;
+}
+ .scopeContainer .talkingPanel span {
+     display: flex;
+     flex-direction:column;
+     padding: 10px;
+}
+ .scopeContainer .logoPanel span {
+     content:url(agt-logo.png);
+     display: table-cell;
+     padding-top: 112px;
+     padding-left: 50px;
+}
+ div.infoPanel {
+     width: 100%;
+     height: 120px;
+     border: 1px solid white;
+     padding: 10px;
+}
+ div.infoPanel .row3cols > div {
+     width: 33%;
+}
+ div.infoPanel p {
+     margin: 0;
+     height: 70px;
+     overflow: hidden;
+}
+ div.flexRow {
+     display: flex;
+     flex-direction: row;
+}
+ div .thresholdPanel span {
+     margin-left: 10px;
+     margin-right: 10px;
+}
+ .rawThreshold {
+     border: 1px solid black;
+     padding: 10px;
+}
+ #transcript {
+     min-height: 60px;
+     display: block;
+     text-align: left;
+     overflow: auto;
+}
+ div.audioRecorder {
+     clear: both;
+}
+ div.audioRecorder button {
+     color: black;
+     background-color: #ec7211;
+     cursor: pointer;
+     border: 1px solid;
+     border-radius: 2px;
+     padding: 0.4rem, 2rem;
+     line-height: 2.2rem;
+     font-weight: 300;
+     font-size: 1.2rem;
+}
+ div.Graph {
+     background-color: #eaeded;
+     border-color: #545b64;
+     border: solid;
+     padding: 10px;
+     margin: 0;
+}
+ div.MyTimeSeriesContainer {
+     position: relative;
+     display: block;
+     width: 97%;
+}
+ div.Legend {
+     text-align: left;
+     position: absolute;
+     top: 5px;
+     z-index: 1;
+     left: 20px;
+     fill: whitesmoke;
+     background: darkgray;
+     padding: 10px;
+     border: 1px solid white;
+     font-size: small;
+     color: black;
+}
+ div.Legend div.row {
+     margin-bottom: 5px;
+}
+ div.Legend div.value {
+     margin-left: 20px;
+}
+ div.Legend div.toxicityScore {
+     background-color: rgb(0, 255, 0);
+     float: left;
+     height: 15px;
+     width: 15px;
+}
+ div.Legend div.p90Score {
+     background-color: rgb(255, 0, 0);
+     float: left;
+     height: 15px;
+     width: 15px;
+}
+ div.Legend div.p75Score {
+     background-color: rgb(100, 0, 155);
+     float: left;
+     height: 15px;
+     width: 15px;
+}
+ div.progressOuterContainer {
+     height: 20px;
+     width: 100%;
+     background-color: #e0e0de;
+     border-radius: 50px;
+     margin: 0 10px;
+     overflow: hidden;
+}
+ div.progressOuterContainer div.progressInnerContainer {
+     height: 100%;
+     width: 0;
+     background-color: steelblue;
+     border-radius: inherit;
+     transition: width 1s ease-in-out;
+     text-align: right;
+}
+ div.progressOuterContainer span.progressText {
+     color: black;
+     font-weight: bold;
+     position: relative;
+     top: -6px;
+     padding: 5px;
+     height: 18px;
+}
