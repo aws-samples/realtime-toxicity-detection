@@ -1,6 +1,7 @@
 # Training and deploying our model with Amazon SageMaker Studio
 
 - [Training and deploying our model with Amazon SageMaker Studio](#training-and-deploying-our-model-with-amazons-sagemaker-studio)
+- [Design decisions](#design-decisions)
 - [Deployment Steps](#deployment-steps)
 - [Next Steps](#next-steps)
 - [Cleanup](#cleanup)
@@ -9,7 +10,7 @@ At the heart of all ML NLP problems are the four stages of data exploration, pre
 
 We will use the SageMaker Studio IDE as our single pane of glass for this stage of the solution, as it exposes all the platform features we need, and more. If you don't yet have a SageMaker Studio Domain setup, there is a [quick start wizard](https://docs.aws.amazon.com/sagemaker/latest/dg/onboard-quick-start.html) in the AWS console.
 
-The SageMaker Platform components we will be using are 
+The SageMaker Platform components we will be using include 
 
 - A fully managed web based [Jupyter Lab IDE](https://docs.aws.amazon.com/sagemaker/latest/dg/studio.html)
 - SageMaker [SkLearn processing](https://docs.aws.amazon.com/sagemaker/latest/dg/use-scikit-learn-processing-container.html) environment for offloading our NLP pre-processing onto appropriately sized compute
@@ -46,6 +47,9 @@ This is one row per example, preceeded with the list of categories, prefixed wit
 __label__CategoryA __label_CategoryN Some text for training
 ```
 
+# Design decisions
+
+In this solution, to keep the focus on the problem at hand, we are minimizing the number of services and steps we use. For our live inference endpoint, we are injecting our NLP components onto a base Scikit Learn container at launch, adding a few minutes before the endpoint is live. Using Serverless Inference, the compute behind the endpoint can scale to zero after a period of non-utilization. In a production environment you would likely want to create a finalized container, with all dependencies baked in, to remove this startup time penalty. 
 
 # Deployment steps 
 

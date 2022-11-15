@@ -6,7 +6,7 @@
 - [Cleanup](#cleanup)
 
 By this stage, we have a trained and deployed toxicity prediction model, but we need to expose it, securely, for our front end to consume. 
-To achieve this we will use a serverless AWS Lambda function, securely exposed with the new Function URL feature.
+To achieve this we will use a serverless AWS Lambda function, securely exposed via a Function URL.
 
 # Deployment steps
 
@@ -25,12 +25,9 @@ To find this information
 
 ## IAM permissions
 
-First we will create an IAM permission to let the Lambda function invoke our SageMaker serverless inference endpoint. 
-
 ### Creating our custom policy
 
 First we will create an IAM  policy to let our Lambda function invoke our SageMaker endpoint.
-
 
 - Open the [Identity and Access Management Console](https://console.aws.amazon.com/iam/home?)
 - Select `Access management` and then `Policies` from the left hand navigation
@@ -54,7 +51,7 @@ First we will create an IAM  policy to let our Lambda function invoke our SageMa
 - Select `Next: Tags` to go to the optional Tags configuration page
 - Press `Next: Review` to get to the final step
     - Enter `LambdaInvokeSageMakerToxicityEndpoint` as the policy name
-    - Enter a description if you like
+    - Enter `Permission for a Lambda Function to invoke our SageMaker Toxicity endpoint` for the description
     - Select `Create policy`
 
 
@@ -74,7 +71,7 @@ Now we will use this policy inside an IAM Role which we will assign to our Lambd
       - If there is no result, make sure you type the name you gave the policy in the previous step
 - Press `Next` to review and create our IAM Role
     - Enter `LambdaToxicityRole` for the Role name
-    - Enter a description if you like
+    - Enter `Permission for a Lambda Function to invoke our SageMaker Toxicity endpoint` for the Description
 - Select `Create role`
 
 ## Lambda
@@ -135,13 +132,13 @@ The results should look something like this:
 
 ### Test
 
-At this stage we have linked out SageMaker Inference Endpoint to our AWS Lambda function, and given it a secure but publicly addressable HTTPS URI. 
+At this stage we have linked our SageMaker Inference Endpoint to our AWS Lambda function, and given it a secure but publicly addressable HTTPS URI. 
 We don't need to pre-process the text, as this is taken care of by our SageMaker Inference Endpoint. 
 
 From the `Configuration` menu, select `Function URL` from the left navigation, and from there you will see the URL address. 
-Click it and it will open in a new tab and throw a 403 error : `{"Message":"Forbidden"}` as we haven't authenticated to it yet. 
+Click it and it will open in a new tab and throw an HTTP 403 error : `{"Message":"Forbidden"}` as we haven't authenticated to it yet. 
 
-So, to test our function is working together with SageMaker, we can configure a Lambda Test. 
+So, to test our function is working in conjunction with SageMaker, we can configure a Lambda Test. 
 
 - Select the `Test` tab, and `Create new event`
 - Enter a suitable `Event name`

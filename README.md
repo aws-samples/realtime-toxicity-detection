@@ -2,7 +2,8 @@
 
 ![aws provider](https://img.shields.io/badge/provider-AWS-orange?logo=amazon-aws&color=ff9900) ![Build status](https://github.com/aws-samples/realtime-toxicity-detection/actions/workflows/build.yml/badge.svg)
 
-- [A cost effective approach to detecting Toxicity in Game chat in near real time](#a-cost effective-approach-to-detecting-toxicity-in-near-real time)
+
+- [Realtime Toxicity Detection](#realtime-toxicity-detection)
 - [What is toxicity?](#what-is-toxicity)
 - [Design considerations](#design-considerations)
 - [High Level Architecture](#high-level-architecture)
@@ -49,8 +50,8 @@ We will also re-use our own pre-processing code for the training and inference s
 
 We can commit to processing the audio on the client side, for a couple of reasons. 
 
-- #1) So we can determine clearly what is being said if more than one person speaks simultaneously, which would be very difficult on a merged audio stream
-- #2) Processing on the client side lets us identify who the speaker is trivially
+1. So we can determine clearly what is being said if more than one person speaks simultaneously, which would be very difficult on a merged audio stream
+2. Processing on the client side lets us identify who the speaker is trivially
 
 A good side effect of pushing this responsibility to the client is that it also allows us to implement a greaceful UI to warn someone if their language is degrading, and maybe act on it locally.
 
@@ -118,4 +119,4 @@ You need to allow the site access to your microphone in your web browser, when i
 
 # License
 
-This example is licensed under the Apache 2.0 License. See LICENSE file.
+This example is licensed under the MIT-0 License. See LICENSE file.
