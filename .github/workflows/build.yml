@@ -9,34 +9,45 @@ on:
   pull_request:
     branches: [ "main" ]
 
+defaults:
+  run:
+    working-directory: website
+
 jobs:
+
   build:
 
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [16.x, 18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: touch ./src/aws-exports
-    - run: 'echo { \"API_URL\": \"https://www.example/com\" } > ./src/toxicity-settings.json'
-    - run: cat ./src/toxicity-settings.json
-    - run: npm run build --if-present
-    - run: npm test --passWithNoTests
+      - uses: actions/checkout@v3
+      - run: pwd
+      - run: ls -l
+      - run: echo ${{ github.path }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: 'website/package-lock.json'
+      - run: npm ci
+      - run: touch ./src/aws-exports
+      - run: 'echo { \"API_URL\": \"https://www.example/com\" } > ./src/toxicity-settings.json'
+      - run: cat ./src/toxicity-settings.json
+      - run: npm run build --if-present
+      - run: npm test --passWithNoTests
+
   savepr:
     runs-on: ubuntu-latest
     name: Save PR number if running on PR by dependabot
     if: github.actor == 'dependabot[bot]'
     steps:
+      - run: pwd
+      - run: ls -l
       - name: Create Directory and save issue
         run: |
           mkdir -p ./pr
