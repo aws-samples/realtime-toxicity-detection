@@ -40,9 +40,15 @@
     ]
   },
   "devDependencies": {
+    "@svgr/webpack": "^6.2.1", 
     "process": "^0.11.10",
     "react-app-rewired": "^2.2.1"
   },
+  "overrides": {
+    "react-scripts": {
+      "@svgr/webpack": "^6.2.1"
+    }
+  }, 
   "jest": {
     "setupFiles": [
       "<rootDir>/setupTest.js"
