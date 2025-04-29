@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@aws-amplify/ui-react": "^3.5.9",
+    "@aws-amplify/ui-react": "^6.11.1",
     "@testing-library/react": "^13.4.0",
-    "aws-amplify": "^4.3.39",
+    "aws-amplify": "^6.14.4",
     "buffer": "^6.0.3",
     "microphone-stream": "^6.0.1",
     "react": "^18.2.0",
